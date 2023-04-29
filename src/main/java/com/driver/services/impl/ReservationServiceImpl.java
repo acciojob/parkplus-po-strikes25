@@ -38,7 +38,7 @@ public class ReservationServiceImpl implements ReservationService {
         List<Spot> spotList = parkingLotRepository3.findById(parkingLotId).get().getSpotList();
         for(Spot spot : spotList) {
             // 2. Traverse Spot List and check if any/all spots are occupied ;
-            if(!spot.isOccupied()) {
+            if(!spot.getOccupied()) {
                 int minimumTotalPrice = Integer.MAX_VALUE;
                 // 3. If spot are available then check if the spotType >= vehicleType ;
                 if(numberOfWheels == 2 && spot.getSpotType().equals(SpotType.TWO_WHEELER) || spot.getSpotType().equals(SpotType.FOUR_WHEELER) ||
