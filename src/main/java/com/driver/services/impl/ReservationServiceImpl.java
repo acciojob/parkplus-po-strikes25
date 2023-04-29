@@ -36,6 +36,7 @@ public class ReservationServiceImpl implements ReservationService {
 
         Spot reservedSpot = new Spot();
         List<Spot> spotList = parkingLotRepository3.findById(parkingLotId).get().getSpotList();
+        boolean spotCheck = false;
         for(Spot spot : spotList) {
             // 2. Traverse Spot List and check if any/all spots are occupied ;
             if(!spot.getOccupied()) {
@@ -51,9 +52,11 @@ public class ReservationServiceImpl implements ReservationService {
                         reservedSpot = spot;
                     }
                 }
-            } else
-                throw new RuntimeException("Cannot make reservation");
+                spotCheck = true;
+            }
         }
+        if(!spotCheck)
+            throw new RuntimeException("Cannot make reservation");
 
         newReservation.setSpot(reservedSpot);
         newReservation.setNumberOfHours(timeInHours);

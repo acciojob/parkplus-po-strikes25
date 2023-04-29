@@ -52,9 +52,6 @@ public class ParkingLotServiceImpl implements ParkingLotService {
     @Override
     public void deleteSpot(int spotId) {
         Spot spot = spotRepository1.findById(spotId).get();
-        // Null Pointer Exception ;
-        if(spot == null)
-            return;
         ParkingLot parkingLot = spot.getParkingLot();
         parkingLot.getSpotList().remove(spot);
 
