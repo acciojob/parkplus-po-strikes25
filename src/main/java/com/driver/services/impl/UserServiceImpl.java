@@ -1,5 +1,6 @@
 package com.driver.services.impl;
 
+import com.driver.model.User;
 import com.driver.repository.UserRepository;
 import com.driver.services.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
